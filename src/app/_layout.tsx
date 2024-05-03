@@ -2,8 +2,14 @@ import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { TamaguiProvider } from 'tamagui';
+import config from '../../tamagui.config';
 
-import config from '../tamagui.config';
+export const unstable_settings = {
+  initialRouteName: '(tabs)',
+};
+
+// Prevent the splash screen from auto-hiding before asset loading is complete.
+SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
   const [loaded] = useFonts({
@@ -21,7 +27,11 @@ export default function Layout() {
 
   return (
     <TamaguiProvider config={config}>
-      <Stack />
+      <Stack>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="login" />
+        <Stack.Screen name="register" />
+      </Stack>
     </TamaguiProvider>
   );
 }
