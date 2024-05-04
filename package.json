@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "main": "expo-router/entry",
   "scripts": {
-    "android": "expo start --android",
     "lint": "eslint \"**/*.{js,jsx,ts,tsx}\" && prettier -c \"**/*.{js,jsx,ts,tsx,json}\"",
     "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix && prettier \"**/*.{js,jsx,ts,tsx,json}\" --write",
-    "ios": "expo start --ios",
-    "start": "expo start",
-    "web": "expo start --web",
-    "prepare": "husky && husky install"
+    "prepare": "husky && husky install",
+    "start:development": "NODE_ENV=development npx expo start",
+    "start:production": "NODE_ENV=production npx expo start",
+    "prebuild:development:android": "NODE_ENV=development npx expo prebuild --platform android",
+    "prebuild:development:ios": "NODE_ENV=development npx expo prebuild --platform ios",
+    "prebuild:production:android": "NODE_ENV=production npx expo prebuild --platform android",
+    "prebuild:production:ios": "NODE_ENV=production npx expo prebuild --platform ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.0",
@@ -20,14 +24,16 @@
     "@tamagui/react-native-media-driver": "1.74.8",
     "@tamagui/shorthands": "1.74.8",
     "@tamagui/themes": "1.74.8",
+    "app-icon-badge": "^0.0.15",
+    "dotenv": "^16.4.5",
     "expo": "^50.0.17",
-    "expo-constants": "~15.4.5",
     "expo-font": "~11.10.2",
     "expo-linking": "~6.2.2",
     "expo-router": "^3.4.7",
     "expo-status-bar": "~1.11.1",
     "expo-system-ui": "~2.9.3",
     "expo-web-browser": "~12.8.2",
+    "ntl": "^5.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.73.6",
@@ -37,7 +43,8 @@
     "react-native-screens": "~3.29.0",
     "react-native-url-polyfill": "^2.0.0",
     "react-native-web": "~0.19.10",
-    "tamagui": "1.74.8"
+    "tamagui": "1.74.8",
+    "zod": "^3.23.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -52,7 +59,8 @@
     "husky": "^8.0.0",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "win-node-env": "^0.6.1"
   },
   "eslintConfig": {
     "extends": "universe/native"
