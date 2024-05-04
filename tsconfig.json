@@ -2,11 +2,12 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
-
+    "checkJs": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["*"]
+      "@/*": ["*"],
+      "@env": ["./env.js"],
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts", "env.ts"]
 }
