@@ -5,7 +5,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     ...config,
     name: env.EXPO_PUBLIC_APP_NAME,
     slug: 'food-app-supabase',
-    version: '1.0.0',
+    version: env.VERSION,
     scheme: 'food-app-supabase',
     web: {
       bundler: 'metro',
@@ -19,6 +19,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         {
           enabled: env.NODE_ENV !== 'production',
           badges: [
+            {
+              text: env.VERSION,
+              type: 'ribbon',
+              color: 'white',
+            },
             {
               text: env.NODE_ENV,
               type: 'banner',
