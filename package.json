@@ -12,7 +12,8 @@
     "prebuild:development:ios": "NODE_ENV=development npx expo prebuild --platform ios",
     "prebuild:production:android": "NODE_ENV=production npx expo prebuild --platform android",
     "prebuild:production:ios": "NODE_ENV=production npx expo prebuild --platform ios",
-    "android": "expo run:android",
+    "android:development": "NODE_ENV=development npx expo run:android",
+    "android:production": "NODE_ENV=production npx expo run:android",
     "ios": "expo run:ios"
   },
   "dependencies": {
